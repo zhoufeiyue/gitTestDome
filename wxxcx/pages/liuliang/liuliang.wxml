@@ -1,0 +1,57 @@
+<!--pages/liuliang/liuliang.wxml-->
+<view class="body">
+  <view class="nav bc_white">
+    <view class="{{selected?'blue':'default'}}" bindtap="selected">流量充值</view>
+    <view class="{{selected1?'blue':'default'}}" bindtap="selected1">话费充值</view>
+    <view class="{{selected2?'blue':'default'}}" bindtap="selected2">其它充值</view>
+  </view>
+  <view class="{{selected?'show':'hidden'}}">
+     <view class="section">
+       <input type="number" placeholder="请输入手机号码" maxlength="11" bindinput="valueChange"/>
+     </view>
+     <!--归属地-->
+     <view class="{{tellenght?'liupayshow':'liupay'}} showplace ">
+        <text>{{attribution.pro}}.{{attribution.city}}.{{attribution.operator}}</text>
+     </view>
+     <view class="{{showcheack==false?'liupay':'changepro'}}">
+          <label class="checkbox" bindtap="checkboxChangeone" id="0">
+            <checkbox value="0" checked="{{cheackone}}"/>全国
+          </label>
+          <label class="checkbox" bindtap="checkboxChangetow" id="1">
+            <checkbox value="1" checked="{{cheacktow}}"/>省内
+          </label>
+     </view>
+     <!--包信息-->
+     <view class='content clearfix'>
+        <view  wx:for="{{goods}}" wx:key="" bindtap="clickinfo" id="{{index}}" class="{{index==clickid?'showinfored':'showinfo'}}">
+            <view class="flowsize">{{item.goods}}</view>
+            <view class='price'>售价：<text>{{item.price}}</text>元</view>
+        </view>
+     </view>
+     <view class="{{tellenght?'liupayshow':'liupay'}}"><text class='fontstyle' bindtap="nowpay">{{clickid==null?"请选择流量包":"购买"+"("+changegood.goods+"  "+changegood.price+"元)"}} </text></view>
+     <!--<view class="showprice">
+         <view><text class="changeprice">20.00元</text><text class="changetext">全国可用 月底失效</text><text class="quickpay">购买</text></view>
+         <view><text class="changeprice">19.00元</text><text class="changetext">省内可用 月底失效</text><text class="quickpay">购买</text></view>
+     </view>-->
+     <view class="titleinfo">
+         <view class="titlefrist">【温馨提示】</view>
+         <view>1.手机欠费停机、停机保号、携号转网、运营商黑名单、转套餐未生效，处于未激活期、充值期、锁定期都不可办理流量充值包。</view>
+         <view>2.流量商品一经成功充值则无法扣除退还，请核对要充值的手机号，因填写错误造成的损失我司不予承担。</view>
+         <view>3.一般下订单后1-30分钟充值成功，个别号码24小时内。本流量包一个月可多次订购。</view>
+         <view>4.交易成功后请查询到帐后再使用该流量，以免造成损失（出于未核实到帐情况，出现扣除话费的责任自负）。</view>
+         <view>5.流量产品充值成功后到帐立即生效，当月有效，到期自动失效，不自动续订，未使用完的部分不能延续至次月使用。</view>
+         <view>6.充值售后服务可咨询客服电话：021-68771516</view>
+     </view>
+  </view>
+  <view class="{{selected1?'show':'hidden'}}">敬请期待产品上线</view>
+  <view class="{{selected2?'show':'hidden'}}">敬请期待产品上线</view>
+</view>
+<!--模态框  -->
+<modal class='modaltext'
+    title="{{title}}"
+     hidden="{{hiddenModal}}"
+     confirm-text=""
+     cancel-text=""
+     bindconfirm="listenerConfirm"
+     bindcancel="listenerCancel" >
+</modal>

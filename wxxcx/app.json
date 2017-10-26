@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/liuliang/liuliang",
+    "pages/huafei/huafei"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#6990ff",
+    "navigationBarTitleText": "充值",
+    "navigationBarTextStyle":"#fff"
+  }
+}
